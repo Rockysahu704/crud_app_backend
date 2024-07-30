@@ -1,5 +1,7 @@
 package org.jsp.ems.controller;
 
+import java.util.List;
+
 import org.jsp.ems.entity.Employee;
 import org.jsp.ems.responsestructure.ResponseStructure;
 import org.jsp.ems.service.EmployeeService;
@@ -37,6 +39,10 @@ public class EmployeeController {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ResponseStructure<Employee>> findEmployeeById(@PathVariable int id) {
 		return service.findEmployeeById(id);
+	}
+	@GetMapping
+	public ResponseEntity<ResponseStructure<List<Employee>>> findEmployeeById() {
+		return service.findAllEmployee();
 	}
 	
 	@DeleteMapping(value = "/{id}")

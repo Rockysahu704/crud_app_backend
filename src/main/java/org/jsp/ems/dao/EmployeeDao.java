@@ -1,5 +1,6 @@
 package org.jsp.ems.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.jsp.ems.entity.Employee;
@@ -31,6 +32,10 @@ public class EmployeeDao {
 
 	public Optional<Employee> findByEmailAndPassword(String email, String password) {
 		return repository.findByEmailAndPassword(email, password);
+	}
+
+	public List<Employee> findAllEmployee() {
+		return repository.findAll();
 	}
 
 }

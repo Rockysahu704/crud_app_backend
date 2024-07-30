@@ -1,5 +1,6 @@
 package org.jsp.ems.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.jsp.ems.dao.EmployeeDao;
@@ -68,6 +69,20 @@ public class EmployeeService {
 		structure.setHttpCode(HttpStatus.OK.value());
 		structure.setMessage("Employee Verified...");
 		structure.setBody(optional.get());
+		return new ResponseEntity<>(structure, HttpStatus.OK);
+	}
+
+	public ResponseEntity<ResponseStructure<List<Employee>>> findAllEmployee() {
+		
+		
+		List<Employee> employees = dao.findAllEmployee();
+		if(employees.isEmpty())
+			throw new EmployeeNotFoundException();
+		
+		ResponseStructure<List<Employee>> structure = new ResponseStructure<>();
+		structure.setHttpCode(HttpStatus.OK.value());
+		structure.setMessage("Employee Verified...");
+		structure.setBody(employees);
 		return new ResponseEntity<>(structure, HttpStatus.OK);
 	}
 
